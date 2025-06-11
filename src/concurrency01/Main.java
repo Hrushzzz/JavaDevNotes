@@ -15,6 +15,9 @@ public class Main {
             t2.start();
         }
 
+        SumCalculator sumCalculator = new SumCalculator(100);
+        Thread t3 = new Thread(sumCalculator);
+        t3.start();
     }
 }
 
