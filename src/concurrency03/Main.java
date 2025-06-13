@@ -1,5 +1,7 @@
 package concurrency03;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class Main {
@@ -47,6 +49,7 @@ public class Main {
 
 
         // V3 ::: *** Adder - Subtractor problem : Solving Using "Synchronized keyword" ***
+        /*
         Count count = new Count(0);
 
         AdderSync adderSync = new AdderSync(count);
@@ -62,6 +65,25 @@ public class Main {
         subtractorThread.join();
 
         System.out.println("Count in Synchronized keyword Version ::: "+ count.val);
+         */
+
+
+        // V5 ::: *** Adder - Subtractor problem : Solving Using "Atomic Integer" ***
+        AtomicInteger count = new AtomicInteger(0);
+
+        AdderAtomicInteger adderAtomicInteger = new AdderAtomicInteger(count);
+        SubtractorAtomicInteger subtractorAtomicInteger = new SubtractorAtomicInteger(count);
+
+        Thread adderThread = new Thread(adderAtomicInteger);
+        Thread subtractorThread = new Thread(subtractorAtomicInteger);
+
+        adderThread.start();
+        subtractorThread.start();
+
+        adderThread.join();
+        subtractorThread.join();
+
+        System.out.println("Count in AtomicInteger Version ::: " + count.get());
 
     }
 }
