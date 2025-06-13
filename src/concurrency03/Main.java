@@ -26,6 +26,7 @@ public class Main {
 
 
         // V2 ::: *** Adder - Subtractor problem : Solving Using Mutex ***
+        /*
         ReentrantLock mutex = new ReentrantLock();
         Count count = new Count(0);
 
@@ -42,6 +43,25 @@ public class Main {
         subtractorThread.join();
 
         System.out.println("Count in Mutex Version ::: "+ count.val);
+         */
+
+
+        // V3 ::: *** Adder - Subtractor problem : Solving Using "Synchronized keyword" ***
+        Count count = new Count(0);
+
+        AdderSync adderSync = new AdderSync(count);
+        SubtractorSync subtractorSync = new SubtractorSync(count);
+
+        Thread adderThread = new Thread(adderSync);
+        Thread subtractorThread = new Thread(subtractorSync);
+
+        adderThread.start();
+        subtractorThread.start();
+
+        adderThread.join();
+        subtractorThread.join();
+
+        System.out.println("Count in Synchronized keyword Version ::: "+ count.val);
 
     }
 }
