@@ -1,11 +1,14 @@
 package concurrency03;
 
+import java.util.concurrent.locks.ReentrantLock;
+
 public class Main {
     public static void main(String[] args) throws InterruptedException {
 
+        // V1 :::  *** Adder - Subtractor problem : General Version ***
+        /*
         Count count = new Count(0);
 
-        // *** Adder - Subtractor problem : General Version ***
         Adder adder = new Adder(count);
         Subtractor subtractor = new Subtractor(count);
 
@@ -18,6 +21,27 @@ public class Main {
         addThread.join();  // makes the main thread wait until the thread does not complete execution
         subtractorThread.join();
 
-        System.out.println("Count is ::: "+ count.val);
+        System.out.println("Count in General Version ::: "+ count.val);
+         */
+
+
+        // V2 ::: *** Adder - Subtractor problem : Solving Using Mutex ***
+        ReentrantLock mutex = new ReentrantLock();
+        Count count = new Count(0);
+
+        AdderMutex adderMutex = new AdderMutex(count, mutex);
+        SubtractorMutex subtractorMutex = new SubtractorMutex(count, mutex);
+
+        Thread adderThread = new Thread(adderMutex);
+        Thread subtractorThread = new Thread(subtractorMutex);
+
+        adderThread.start();
+        subtractorThread.start();
+
+        adderThread.join();
+        subtractorThread.join();
+
+        System.out.println("Count in Mutex Version ::: "+ count.val);
+
     }
 }
