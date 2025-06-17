@@ -22,7 +22,7 @@ public class Main {
         System.out.println("Student03 data: ");
         student03.print();
 
-        // 03 - Copy Constructor
+        // 03 - Copy Constructor ::
         Iphone iphone13 = new Iphone(13, 13, 50000, "Iphone", "Apple", 6, 4, 3500);
         System.out.println("Iphone data: " + iphone13);  // prints address of the object
         System.out.println("Iphone13 data: " + iphone13.price);  // access elements of the object
@@ -33,7 +33,7 @@ public class Main {
         System.out.println("Iphone15 data: " + iphone15.price);
 
 
-        //DEEP and SHALLOW copy
+        // DEEP and SHALLOW copy ::
         Student std = new Student(12, "Anand");
         Student std1 = std;  // This is a Shallow copy
         // Shallow copy has a new reference variable, but not a new object
