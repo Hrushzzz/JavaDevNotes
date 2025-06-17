@@ -1,4 +1,4 @@
-package oops;
+package oops01;
 
 public class Student {
 //    private int id;
