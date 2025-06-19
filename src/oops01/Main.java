@@ -49,6 +49,8 @@ public class Main {
          Points to remember :
          01 - Java is a "PASS BY VALUE" language.
          02 - The value we pass is a "double" and it holds the memory address of that object.
+         03 - Whenever you make a class, make all its attributes as private and then
+              create public getters and setters.
          */
     }
 }
