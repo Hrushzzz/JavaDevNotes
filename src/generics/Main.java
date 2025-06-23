@@ -99,6 +99,17 @@ public class Main {
 }
 
 /*
+Few examples of using Wildcards :::
+
+List<?> allList = new ArrayList<>(); // wildcard list
+List<? extends Animal> animalAndChildrenList = new ArrayList<>();
+List<? super Animal> animalAndParentList = new ArrayList<>();
+List<Animal> animalList = new ArrayList<>();
+HashMap<Integer, Animal> animalMap = new HashMap<>();
+ */
+
+
+/*
     Animal
     Dog
 
