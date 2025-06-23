@@ -52,6 +52,58 @@ public class Main {
          */
 
 
+        // LAMBDAS :::
+        // lambdas -> shorter code for anonymous class implementation, for Functional Interfaces
+
+        // example: statusNodeValidatorAnonymousClass
+        Validator statusNodeValidatorAnonymousClass = () -> {
+            System.out.println("Anonymous class - StatusNodeValidatorAnonymousClass");
+            return true;
+        };
+        statusNodeValidatorAnonymousClass.validate();
+
+        // If our method contains only a single line of code, we can write this way:
+        Validator passValidatorLambda = () -> true;
+        passValidatorLambda.validate();
+
+
+        // Option 01 :: Create a new class and use it
+        SingleLineValidator singleLineValidator = new SingleLineValidator();
+        singleLineValidator.validate();
+
+        // Option 02 :: Create an Anonymous Class and use it
+        Validator singleLineValidatorAC = new Validator() {
+            @Override
+            public boolean validate() {
+                return StaticValidation.validate();
+            }
+        };
+        singleLineValidatorAC.validate();
+
+        // Option 03 :: Use Lambdas
+        Validator singleLineValidatorLambda = () -> StaticValidation.validate();
+        singleLineValidatorLambda.validate();
+
+
+        // EXAMPLE :: Printing "Hello World" in different types
+
+        // Option 01 :: implemented traditionally using class
+        HelloWorldPrinter hwp = new HelloWorldPrinter();
+        Thread thread1 = new Thread(hwp);
+        thread1.start();
+
+        // Option 02 :: implemented using lambda
+        Runnable helloWorldPrinter = () ->
+                System.out.println("Hello World...! using Lambda -> " + Thread.currentThread().getName());
+        Thread thread2 = new Thread(helloWorldPrinter);
+        thread2.start();
+
+        // Even shorter Version ::
+        Thread thread3 = new Thread(
+                () -> System.out.println("Hello World...! from shorter version -> " + Thread.currentThread().getName())
+        );
+        thread3.start();
+
 
 
     }
