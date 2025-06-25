@@ -1,0 +1,18 @@
+Thread Pool ::
+Thread pool is a place where I keep my threads and if there is any task,
+my thread can just pick a task from there and start executing it.
+
+Executor Service / Executors is a implementation of Thread Pool in Java.
+
+--> Executors have 2 types of ThreadPool implementation::
+1. FixedThreadPool  --> no.of threads will be fixed in this case  when we create Executor Service object.
+2. CachedThreadPool  --> if all the threads are busy and there is a need of a thread,
+                         it will create a thread, otherwise it will use the idle thread.
+
+If we have a usecase where we have to return something, we have to use "CALLABLE" Interface.
+because "Runnable" cannot return.
+
+CALLABLE is a Generic Interface.
+
+--> RUNNABLE -----> run()
+--> CALLABLE -----> call()
